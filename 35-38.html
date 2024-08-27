@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Function to display the current date & time in the browser
+function tellTime() {
+    var now = new Date();
+    document.getElementById("currentTime").innerHTML = "Current Time: " + now;
+}
+tellTime();
+
+// 2. Function to greet the user using first & last name
+function greetUser(event) {
+    event.preventDefault(); 
+    var firstName = document.getElementById("firstname").value;
+    var lastName = document.getElementById("lastname").value;
+    var fullName = firstName + " " + lastName;
+    var greeting = "Hello, " + fullName + "! Welcome!";
+    document.getElementById("greetingMessage").textContent = greeting;
+}
+
+// 3. Write a function that adds two numbers (input by user)
+// and returns the sum of two numbers.
+
+function sumoftwonum(event) {
+    event.preventDefault();
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    var total = Number(number1) + Number(number2);
+    document.getElementById("Result").textContent = "Sum: " + total; 
+  return sum;
+}
+
+// 4. Calculator:
+// Write a function that takes three arguments num1, num2
+// & operator & compute the desired operation. Return and
+// show the desired result in your browser.
+
+function calculateResult(event) {
+    event.preventDefault();  // Prevent form submission/reload
+
+    // Get the values from the form inputs
+    var num1 = parseFloat(document.getElementById("num1").value);
+    var num2 = parseFloat(document.getElementById("num2").value);
+    var operator = document.getElementById("operator").value;
+
+    var result;
+
+    // Perform the calculation based on the operator
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 !== 0) {
+                result = num1 / num2;
+            } else {
+                result = "Cannot divide by zero!";
+            }
+            break;
+        default:
+            result = "Invalid operator!";
+    }
+
+    // Display the result
+    document.getElementById("result").textContent = "Result: " + result;
+
+    return false; // Return false to prevent form submission
+}
+
+// 5. Write a function that squares its argument.
+
+function calculatesquare() {
+    var number = parseFloat(document.getElementById("number").value);
+    var square = number * number;
+    document.getElementById("RESULT").textContent  = "Result: " + square;
+}
+
+// 6. Write a function that computes factorial of a number.
+
+function calculateFactorial() {
+    var number = parseInt(document.getElementById("number").value);
+    if (number < 0) {
+        document.getElementById("result").textContent = "Factorial is not defined for negative numbers.";
+        return;
+    }
+    var factorial = 1;
+    for (var i = 1; i <= number; i++) {
+        factorial *= i;
+    }
+    document.getElementById("result").textContent = "Factorial: " + factorial;
+}
+
+// 7. Write a function that take start and end number as inputs
+// & display counting in your browser.
+
+function displayCounting() {
+    var start = document.getElementById('start').value;
+    var end = document.getElementById('end').value;
+    start = Number(start);
+    end = Number(end);
+    if (isNaN(start) || isNaN(end) || start > end) {
+        document.getElementById('result').innerHTML = 'Please enter valid numbers where start is less than or equal to end.';
+        return;
+    }
+    var result = '';
+    for (var i = start; i <= end; i++) {
+        result += i + ' ';
+    }
+    document.getElementById('ResulT').innerHTML = result;
+}
+
+// 8. Write a nested function that computes hypotenuse of a
+// right angle triangle.
+// Hypotenuse2 = Base2 + Perpendicular2
+
+function calculateHypotenuse() {
+    var base = document.getElementById('base').value;
+    var perpendicular = document.getElementById('perpendicular').value;
+
+    base = Number(base);
+    perpendicular = Number(perpendicular);
+    function calculateSquare(x) {
+        return x * x;
+    }
+    let hypotenuse = Math.sqrt(calculateSquare(base) + calculateSquare(perpendicular));
+    document.getElementById('resuLt').innerText = "The hypotenuse is: " + hypotenuse;
+}
+
+// 9. Write a function that calculates the area of a rectangle.
+// A = width * height
+// Pass width and height in following manner:
+
+function calculateArea(width, height) {
+    return width * height;
+}
+// Calculate area using values
+function calculateAreaUsingValues() {
+    let area = calculateArea(5, 10); // Pass values directly
+    document.getElementById('resultValues').innerText = "Area (using values): " + area;
+}
+// Calculate area using variables
+function calculateAreaUsingVariables() {
+    let width = document.getElementById('width').value;
+    let height = document.getElementById('height').value;
+
+    // Convert input values to numbers
+    width = Number(width);
+    height = Number(height);
+
+    let area = calculateArea(width, height); // Pass variables
+    document.getElementById('resultVariables').innerText = "Area (using variables): " + area;
+}
+
+// 10. Write a JavaScript function that checks whether a passed
+// string is palindrome or not?
+// A palindrome is word, phrase, or sequence that reads the same backward as
+// forward, e.g., madam.
+
+  function checkPalindrome() {
+    let str = document.getElementById('inputString').value;
+    str = str.replace(/\s+/g, '').toLowerCase();
+    let reversedStr = str.split('').reverse().join('');
+    
+    if (str === reversedStr) {
+        document.getElementById('reSult').innerText = "Yes, it's a palindrome!";
+    } else {
+        document.getElementById('reSult').innerText = "No, it's not a palindrome.";
+    }
+}
+
+// 11. Write a JavaScript function that accepts a string as a
+// parameter and converts the first letter of each word of the
+// string in upper case.
+
+function capitalizeWords() {
+    let str = document.getElementById('inputString').value;
+    // Split the string into words, capitalize each word, and join them back
+    let capitalizedStr = str.split(' ').map(function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+    document.getElementById('resUlt').innerText = capitalizedStr;
+}
+
+// 12. Write a JavaScript function that accepts a string as a
+// parameter and find the longest word within the string.
+
+function findLongestWord() {
+    let str = document.getElementById('inputString').value;
+    let words = str.split(' ');
+    let longestWord = '';
+
+    for (let word of words) {
+        // If the current word is longer than the longest word, update the longest word
+        if (word.length > longestWord.length) {
+            longestWord = word;
+        }
+    }
+    document.getElementById('rEsult1').innerText = "The longest word is: " +longestWord;
+}
+
+// 13. Write a JavaScript function that accepts two arguments, a
+// string and a letter and the function will count the number of
+// occurrences of the specified letter within the string.
+
+function countOccurrences() {
+    let str = document.getElementById('inputString').value;
+    let letter = document.getElementById('inputLetter').value;
+    if (letter.length !== 1) {
+        document.getElementById('result').innerText = "Please enter exactly one letter.";
+        return;
+    }
+    let count = 0;
+    for (let char of str) {
+        if (char === letter) {
+            count++;
+        }
+    }
+    document.getElementById('REsult').innerText = "The letter '" + letter + "' occurs " + count + " times.";
+}
+
+// The Geometrizer
+// Create 2 functions that calculate properties of a circle, using
+// the definitions here.
+
+function calcCircumference() {
+    let radius = parseFloat(document.getElementById('radius').value);
+    if (isNaN(radius) || radius <= 0) {
+        document.getElementById('circumferenceResult').innerText = "Please enter a valid radius.";
+        return;
+    }
+    let circumference = 2 * Math.PI * radius;
+    document.getElementById('circumferenceResult').innerText = "The circumference is " + circumference.toFixed(2);
+}
+function calcArea() {
+    let radius = parseFloat(document.getElementById('radius').value);
+    if (isNaN(radius) || radius <= 0) {
+        document.getElementById('areaResult').innerText = "Please enter a valid radius.";
+        return;
+    }
+    let area = Math.PI * radius * radius;
+    document.getElementById('areaResult').innerText = "The area is " + area.toFixed(2);
+}
+    </script>
+<!-- 1. Display current date & time in the browser -->
+        <h1>Function of Current Date and Time:</h1>
+        <p id="currentTime"></p>
+
+    <!-- 2. Form to take first & last name and greet the user -->
+        <h1>Function of First and Last Name:</h1>
+    <form onsubmit="greetUser(event)">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required><br><br>
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required><br><br>
+
+        <input type="submit" value="Greet Me!">
+    </form>
+    <p id="greetingMessage"></p>
+
+    <!-- 3. Write a function that adds two numbers (input by user)
+and returns the sum of two numbers. -->
+
+        <h1>Function of The Sum of Two Num:</h1>
+    <form onsubmit="sumoftwonum(event)">
+        <label for="number1">Number 1:</label>
+        <input type="text" id="number1" name="number1" required><br><br>
+
+        <label for="number2">Number 2:</label>
+        <input type="text" id="number2" name="number2" required><br><br>
+
+        <input type="submit" value="Add">
+    </form>
+    <p id="Result"></p>
+
+    <!-- 4. Calculator: -->
+    <h1>Simple Calculator</h1>
+    
+    <form onsubmit="return calculateResult(event)">
+        <label for="num1">Number 1:</label>
+        <input type="number" id="num1" required><br><br>
+
+        <label for="num2">Number 2:</label>
+        <input type="number" id="num2" required><br><br>
+
+        <label for="operator">Operator:</label>
+        <select id="operator" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select><br><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+    
+    <p id="result"></p>
+
+    <!-- 5. Write a function that squares its argument. -->
+
+    <h1>Square Calculator:</h1>
+    <label for="number">Number:</label>
+    <input type="number" id="number" placeholder="Enter a num">
+    <button onclick="calculatesquare()">Calculate Square</button>
+
+    <p id="RESULT"></p>
+
+    <!-- 6. Write a function that computes factorial of a number. -->
+
+    <h1>Factorial Calculator</h1>
+    
+    <label for="number">Number:</label>
+    <input type="number" id="number" placeholder="Enter a number" min="0">
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    
+    <p id="result"></p>
+
+    <!-- 7. Write a function that take start and end number as inputs
+    & display counting in your browser. -->
+
+    <h1>Counting</h1>
+    <input type="number" id="start" placeholder="Start Number">
+    <input type="number" id="end" placeholder="End Number">
+    <button onclick="displayCounting()">Start Counting</button>
+    <div id="ResulT"></div>
+
+    <!-- 8. Write a nested function that computes hypotenuse of a
+    right angle triangle.
+    Hypotenuse2 = Base2 + Perpendicular2 -->
+
+    <h1>Hypotenuse Calculator</h1>
+
+    <label for="base">Base:</label>
+    <input type="number" id="base"><br><br>
+
+    <label for="perpendicular">Perpendicular:</label>
+    <input type="number" id="perpendicular"><br><br>
+
+    <button onclick="calculateHypotenuse()">Calculate Hypotenuse</button>
+
+    <p id="resuLt"></p>
+
+    <!-- 9. Write a function that calculates the area of a rectangle.
+    A = width * height
+    Pass width and height in following manner:- -->
+
+    <h1>Rectangle Area Calculator</h1>
+    <label for="width">Width:</label>
+    <input type="number" id="width"><br><br>
+
+    <label for="height">Height:</label>
+    <input type="number" id="height"><br><br>
+    <button onclick="calculateAreaUsingValues()">Calculate Area (Using Values)</button>
+    <button onclick="calculateAreaUsingVariables()">Calculate Area (Using Variables)</button>
+    <!-- Display results -->
+    <p id="resultValues"></p>
+    <p id="resultVariables"></p>
+
+    <!-- 10. Write a JavaScript function that checks whether a passed
+    string is palindrome or not?
+    A palindrome is word, phrase, or sequence that reads the same backward as
+    forward, e.g., madam. -->
+
+    <h1>Palindrome Checker</h1>
+
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString"><br><br>
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+
+    <p id="reSult"></p>
+
+    <!-- 11. Write a JavaScript function that accepts a string as a
+    parameter and converts the first letter of each word of the
+    string in upper case. -->
+
+    <h1>String As Parameter</h1>
+
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString"><br><br>
+    <button onclick="capitalizeWords()">Capitalize</button>
+
+    <p id="resUlt"></p>
+
+    <!-- 12. Write a JavaScript function that accepts a string as a
+    parameter and find the longest word within the string. -->
+
+    <h1>Find the Longest Word</h1>
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString"><br><br>
+    <button onclick="findLongestWord()">Find Longest Word</button>
+
+    <p id="rEsult1"></p>
+
+    <!-- 13. Write a JavaScript function that accepts two arguments, a
+    string and a letter and the function will count the number of
+    occurrences of the specified letter within the string. -->
+
+    <h1>Count Occurrences of a Letter</h1>
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString"><br><br>
+    <label for="inputLetter">Enter a letter:</label>
+    <input type="text" id="inputLetter" maxlength="1"><br><br>
+    <button onclick="countOccurrences()">Count Occurrences</button>
+
+    <p id="REsult"></p>
+
+    <!-- The Geometrizer
+    Create 2 functions that calculate properties of a circle, using
+    the definitions here. -->
+
+    <h1>The Geometrizer</h1>
+    <label for="radius">Enter the radius:</label>
+    <input type="number" id="radius" step="any"><br><br>
+    <button onclick="calcCircumference()">Calculate Circumference</button>
+    <button onclick="calcArea()">Calculate Area</button>
+
+    <p id="circumferenceResult"></p>
+    <p id="areaResult"></p>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="35-38.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
